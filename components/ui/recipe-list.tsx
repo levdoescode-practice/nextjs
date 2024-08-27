@@ -5,6 +5,7 @@ import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "@/componen
 import { RecipeType } from "@/types";
 import { RecipeContext } from "@/context/recipe-context";
 import Link from "next/link";
+import Image from "next/image";
 
 export default function RecipeList({ recipes }: { recipes: Array<RecipeType> }) {
     const [filteredRecipes, setFilteredRecipes] = useState<RecipeType[]>([]);
@@ -31,7 +32,7 @@ export default function RecipeList({ recipes }: { recipes: Array<RecipeType> }) 
                         className="flex flex-col bg-orange-50 hover:scale-105 ease-in duration-200 xl:min-h-[600px] fancyGradient"
                     >
                         <CardHeader>
-                            <img
+                            <Image
                                 src={recipe.image}
                                 alt={recipe.name}
                                 width={500}
