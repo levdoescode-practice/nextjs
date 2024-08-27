@@ -1,10 +1,24 @@
 "use client";
 
-import { useState } from "react";
-import { Card } from "./card";
+import { useContext, useEffect, useState } from "react";
+import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import { RecipeType } from "@/types";
+import { RecipeContext } from "@/context/recipe-context";
 
-export default function RecipeList({recipes}: {recipes: Array<RecipeType}) {
+export default function RecipeList({recipes}: {recipes: Array<RecipeType>}) {
+    const [filteredRecipes, setFilteredRecipes] = useState<RecipeType[]>([]);
+    const { state: {selectedCuisine} } = useContext(RecipeContext);
+
+    useEffect(() => {
+        const getFilteredRecipes = async () => {
+            const filtered = recipes.filter((recipe: RecipeType) => recipe.cuisine === selectedCuisine);
+            setFilteredRecipes(filtered);
+        };
+
+        if (selectedCuisine) {
+            getFilteredRecipes();
+        }
+    }, [recipes, selectedCuisine]);
 
     return (
         <div className="grid grid-cols md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 lg:gap-x-10 gap-y-20 xl:gap-y-32 xl:pt-32 pt-12 pb-40">
