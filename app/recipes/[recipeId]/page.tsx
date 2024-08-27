@@ -1,5 +1,6 @@
 import { getRecipes } from "@/lib/recipe";
 import { RecipeType } from "@/types";
+import Image from "next/image";
 import Link from "next/link";
 
 export async function generateStaticParams() {
@@ -52,7 +53,7 @@ export default async function Page({ params }: { params: { recipeId: string } })
                     </div>
                 </div>
                 <div className="py-4 mx-auto">
-                    <img src={recipe.image} width="400" height="400" className="w-96 h-96 lg:h-[600px] lg:w-[600px]" />
+                    <Image alt={recipe.name} src={recipe.image} width="400" height="400" className="w-96 h-96 lg:h-[600px] lg:w-[600px]" />
                 </div>
             </div>
 
