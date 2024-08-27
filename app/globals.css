@@ -67,3 +67,9 @@
         @apply bg-background text-foreground;
     }
 }
+
+@layer utilities {
+    .fancyGradient {
+        @apply bg-[radial-gradient(circle_at_bottom_left,_var(--tw-gradient-stops))] from-orange-400 via-violet-200 to-orange-200;
+    }
+}
