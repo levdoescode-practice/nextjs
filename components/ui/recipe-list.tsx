@@ -25,11 +25,11 @@ export default function RecipeList({ recipes }: { recipes: Array<RecipeType> }) 
     }, [recipes, selectedCuisine]);
 
     return (
-        <div className="grid grid-cols md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 lg:gap-x-10 gap-y-20 xl:gap-y-32 xl:pt-32 pt-12 pb-40">
+        <div className="grid grid-cols md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 lg:gap-x-10 gap-y-20 xl:gap-y-12 pt-12">
             {(filteredRecipes.length > 0 ? filteredRecipes : recipes).map((recipe: RecipeType, idx: number) => (
                 <Link href={`/recipes/${recipe.id}`} key={`${recipe.name}-${idx}`}>
                     <Card
-                        className="flex flex-col bg-orange-50 hover:scale-105 ease-in duration-200 xl:min-h-[600px] fancyGradient"
+                        className="flex flex-col bg-orange-50 hover:scale-105 ease-in duration-200 fancyGradient"
                     >
                         <CardHeader>
                             <Image
@@ -45,7 +45,7 @@ export default function RecipeList({ recipes }: { recipes: Array<RecipeType> }) 
                                 {recipe.name}
                             </CardTitle>
                         </CardContent>
-                        <CardFooter className="flex items-start gap-2 lg:gap-12 lg:flex-row flex-col">
+                        <CardFooter className="flex items-start gap-2 lg:content-between lg:flex-row flex-col">
                             <div className="flex flex-col">
                                 <p className="text-lg">Serves</p>
                                 <p className="text-gray-800">{recipe.servings}</p>
